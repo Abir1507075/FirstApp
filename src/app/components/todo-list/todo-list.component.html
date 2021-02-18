@@ -1,0 +1,25 @@
+<div>
+    <div class="list-header">
+        <h1>Todo List</h1>
+        <ul>
+            <li><a [class.active]= 'all' (click)="getAll($event)">All</a></li>
+            <li><a [class.active]= 'complete'(click)="getComplete($event)">Complete</a></li>
+            <li><a [class.active]= 'active' (click)="getActive($event)">Active</a></li>
+        </ul>
+    </div>             
+    <div id = 'list-item'>
+        <div *ngFor="let item of getList()"> 
+            <div  class='todo-item'>
+                <input type='checkbox' [checked] = '!item.status' (click)="toggle(item.item)">
+                <span>
+                    {{item.item}}
+                </span>
+                <div class = 'item-edit'>
+                    <button (click)="editItem(item.item)">Edit</button>
+                    <button (click)="deleteItem(item.item)">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
