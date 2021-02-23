@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { TodoListService } from 'src/app/services/todo-list.service';
+import { TodosComponent } from '../todos/todos.component';
 
 @Component({
   selector: 'app-todo-list',
@@ -14,10 +16,13 @@ export class TodoListComponent implements OnInit {
   public active  = false;
 
 
-  constructor(private todoListService:TodoListService) { }
+  constructor(private todoListService:TodoListService,public dialog:MatDialog) { }
   ngOnInit(): void {
     this.todoList = this.todoListService.getTodoList();
     this.todoListService.event.subscribe(value => this.todoList = value);
+    this.todoListService.dialogEvent.subscribe(()=>{
+      this.dialog.closeAll();
+    })
   }
   getList(){
     if(this.all){
@@ -29,7 +34,7 @@ export class TodoListComponent implements OnInit {
     else return this.todoList.filter(value =>{if(value.status)return value});
   }
   toggle(item:string){
-    this.todoList = this.todoList.map(value=>{if(value.item==item){value.status = value.status==false?true:false;return value}return value})
+    this.todoListService.toggle(item);
   }
   getAll(event:any){
     event.preventDefault();
@@ -66,5 +71,11 @@ export class TodoListComponent implements OnInit {
         alert('Todo Edited successfully!');
         this.todoListService.editList(item,todo);
     }
+  }
+  openForm(){
+    this.dialog.open(TodosComponent,{
+      height:'400px',
+      width:'600px'
+    });
   }
 }

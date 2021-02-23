@@ -1,0 +1,20 @@
+<div>
+    <div fxLayout="row" fxLayoutAlign="space-between start">
+        <h1>Contact List</h1>
+        <div>
+            <button mat-raised-button (click)="openForm()">
+                Add Contact
+            </button>
+        </div>
+    </div>
+    <div fxLayout="column">
+        <div (click)="onSelect(i)" class="contact" *ngFor="let contact of contactList;let i = index">
+            <div>
+                {{contact.firstName}}
+            </div>
+            <div>
+                {{contact.mobileNumber}}
+            </div>
+        </div>
+    </div>
+</div>

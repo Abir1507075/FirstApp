@@ -15,11 +15,13 @@ export class TodoListService {
     return this.todoList;
   }
   event = new EventEmitter();
+  dialogEvent = new EventEmitter();
   sendToList(message:any){
     this.todoList.push({
       "status":"false",
       "item": message
     });
+    this.closeDialog();
   }
   deleteList(message:string){
     this.todoList = this.todoList.filter(value => value.item!= message);
@@ -33,4 +35,20 @@ export class TodoListService {
     })
     this.event.emit(this.todoList);
   }
+  closeDialog(){
+    this.dialogEvent.emit();
+  }
+  toggle(item:string){
+    this.todoList = this.todoList.map(value=>{
+      if(value.item==item)
+      {
+        value.status = value.status==false?true:false;
+        return value
+      }
+      return value
+    })
+    this.event.emit(this.todoList);
+  }
+
+
 }

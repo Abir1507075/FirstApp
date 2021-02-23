@@ -14,7 +14,7 @@
     display: flex;
     flex-direction: column;
 }
-.list-header ul{
+.list-header-ul{
     display: flex;
     flex-direction: row;
     justify-content: center;
