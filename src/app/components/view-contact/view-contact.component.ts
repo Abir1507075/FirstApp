@@ -12,7 +12,7 @@ export class ViewContactComponent implements OnInit {
 
   constructor(private route:ActivatedRoute,private contactService:ContactService) { }
   public id = 0;
-  contact = new Contact('','','','');
+  contact = new Contact('','','','',new Date());
   ngOnInit(): void {
     let k  = this.route.snapshot.paramMap.get('id');
     this.id = (k==null)? -1:parseInt(k);

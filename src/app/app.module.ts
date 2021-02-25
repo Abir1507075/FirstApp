@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -14,6 +14,10 @@ import { ContactListComponent } from './components/contact-list/contact-list.com
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { ViewContactComponent } from './components/view-contact/view-contact.component';
 import { HomeComponent } from './components/home/home.component';
+import {MatTableModule} from '@angular/material/table';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +38,10 @@ import { HomeComponent } from './components/home/home.component';
     FormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    FlexLayoutModule
+    MatTableModule,
+
+    FlexLayoutModule,
+    ReactiveFormsModule
   ],
   providers: [TodoListService],
   bootstrap: [AppComponent]
