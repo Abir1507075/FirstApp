@@ -1,62 +1,66 @@
 <div>
     <form [formGroup] = "contactForm" fxLayout="column" fxLayoutAlign="space-around center">
         <div class = form-row>
-            <div fxLayout="row" fxLayoutAlign="space-between center">
-                <input type="text"  formControlName = 'firstName'>
-                <div class="alert-mesg" *ngIf="contactForm.controls.firstName.touched && !contactForm.controls.firstName.valid">This field is required</div>
-            </div>
-            <label>First Name</label>
+            <mat-form-field>
+                <mat-label>First Name</mat-label>
+                <input  matInput type="text"  formControlName = 'firstName'>
+                <mat-error  *ngIf="contactForm.controls.firstName.touched && !contactForm.controls.firstName.valid">
+                    This field is Required
+                </mat-error>
+            </mat-form-field>
         </div>
-        <div class = form-row>
-            <div fxLayout="row" fxLayoutAlign="space-between center">
-                <input type="text" formControlName = 'lastName'>
-                <div class="alert-mesg" *ngIf="contactForm.controls.lastName.touched && !contactForm.controls.lastName.valid">This field is required</div>
-            </div>
-            <label>Last Name</label>
-        </div>
-        <div class = form-row>
-            <div fxLayout="row" fxLayoutAlign="space-between center">
-                <input type="email"  formControlName = 'email' >
-                <div class="alert-mesg" *ngIf="contactForm.controls.email.touched && contactForm.controls.email.hasError('required')">This field is required</div>
-                <div class="alert-mesg" *ngIf="contactForm.controls.email.touched && contactForm.controls.email.hasError('email')">Invalid Email</div>
 
-            </div>
-            <label>Email</label>
+        <div class = form-row>
+            <mat-form-field>
+                <mat-label>Last Name</mat-label>
+                <input matInput  type="text" formControlName = 'lastName'>
+                <mat-error *ngIf="contactForm.controls.lastName.touched && !contactForm.controls.lastName.valid">
+                    This field is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class = form-row>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput  placeholder="Ex. pat@example.com" type="email"  formControlName = 'email'>
+                <mat-error *ngIf="contactForm.controls.email.touched && contactForm.controls.email.hasError('required')">
+                    This field is required
+                </mat-error>
+                <mat-error *ngIf="contactForm.controls.email.touched && contactForm.controls.email.hasError('email')">
+                    Invalid Email
+                </mat-error>
+            </mat-form-field>
         </div>
         <div class = form-row>
-            <div fxLayout="row" fxLayoutAlign="space-between center">
-                <input type="text" formControlName = 'mobileNumber'>
-                <div class="alert-mesg" *ngIf="contactForm.controls.mobileNumber.touched && contactForm.controls.mobileNumber.hasError('required')">This field is required</div>
-                <div class="alert-mesg" *ngIf="contactForm.controls.mobileNumber.touched && contactForm.controls.mobileNumber.hasError('pattern')">Invalid Mobile Number</div>
+            <mat-form-field>
+                <mat-label>Mobile Number</mat-label>
+                <input matInput type="text" formControlName = 'mobileNumber'>
+                <mat-error *ngIf="contactForm.controls.mobileNumber.touched && contactForm.controls.mobileNumber.hasError('required')">
+                    This field is required
+                </mat-error>
+                <mat-error *ngIf="contactForm.controls.mobileNumber.touched && contactForm.controls.mobileNumber.hasError('pattern')">
+                    Invalid Mobile Number
+                </mat-error>
+            </mat-form-field>
+        </div>
 
-            </div>
-            <label >Mobile Number</label>
+        <div class="form-row" >
+            <mat-form-field >
+                <mat-label>Date of Birth</mat-label>
+                <input matInput formControlName="dateOfBirth" [matDatepicker] = "date" >
+                <mat-datepicker-toggle matSuffix [for] = "date"></mat-datepicker-toggle>
+                <mat-datepicker #date></mat-datepicker>
+                <mat-error *ngIf="contactForm.controls.dateOfBirth.touched && !contactForm.controls.dateOfBirth.valid">
+                    This field is required
+                </mat-error>
+            </mat-form-field>
         </div>
-        <div class="form-row" formGroupName = "dateOfBirth">
-            <div fxLayout="row" fxLayoutAlign="space-between center">
-                <div>
-                    <select name="year" id="year" (click)="isYearOkay()" formControlName = "year">
-                        <option value="" disabled selected>Year</option>
-                        <option *ngFor="let y of year">{{y}} </option>
-                    </select>
-                    <select name="month" id="month" (click)="isMonthOkay()" formControlName = "month" >
-                        <option value="" disabled selected>Month</option>
-                        <option *ngFor="let month of months" >{{month.month}} </option>
-                    </select>
-                    <select name="day" id="day" formControlName = "day">
-                        <option value="" disabled selected>Day</option>
-                        <option *ngFor="let day of days" >{{day}} </option>
-                    </select>
-                </div>
-                <div class="alert-mesg" *ngIf="contactForm.controls.dateOfBirth.get('day')?.touched && !contactForm.controls.dateOfBirth.get('day')?.valid">Birth Date is required</div>
-                <div class="alert-mesg" *ngIf="contactForm.controls.dateOfBirth.get('month')?.touched && !contactForm.controls.dateOfBirth.get('month')?.valid">Birth Month is required</div>
-                <div class="alert-mesg" *ngIf="contactForm.controls.dateOfBirth.get('year')?.touched && !contactForm.controls.dateOfBirth.get('year')?.valid">Birth Year is required</div>
-            </div>
-            <label>Date of Birth</label>
-        </div>
+
         <div class = form-row>
             <button mat-button mat-dialog-close [disabled]="!contactForm.valid" (click)="saveContact()">Submit</button>
             <button mat-button mat-dialog-close>Cancel</button>
         </div>
     </form>
 </div>
+

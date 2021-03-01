@@ -15,6 +15,12 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { ViewContactComponent } from './components/view-contact/view-contact.component';
 import { HomeComponent } from './components/home/home.component';
 import {MatTableModule} from '@angular/material/table';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { ContactComponent } from './components/contact/contact.component';
+
 
 
 
@@ -26,7 +32,8 @@ import {MatTableModule} from '@angular/material/table';
     ContactFormComponent,
     ContactListComponent,
     ViewContactComponent,
-    HomeComponent
+    HomeComponent,
+    ContactComponent
   ],
   entryComponents:[
     ContactFormComponent,
@@ -39,6 +46,11 @@ import {MatTableModule} from '@angular/material/table';
     BrowserAnimationsModule,
     MatDialogModule,
     MatTableModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatInputModule,
+
 
     FlexLayoutModule,
     ReactiveFormsModule
