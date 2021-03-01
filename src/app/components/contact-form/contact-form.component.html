@@ -58,8 +58,8 @@
         </div>
 
         <div class = form-row>
-            <button mat-button mat-dialog-close [disabled]="!contactForm.valid" (click)="saveContact()">Submit</button>
-            <button mat-button mat-dialog-close>Cancel</button>
+            <button color = "primary" mat-raised-button mat-dialog-close [disabled]="!contactForm.valid" (click)="saveContact()">Submit</button>
+            <button color = "warn" mat-raised-button mat-dialog-close>Cancel</button>
         </div>
     </form>
 </div>

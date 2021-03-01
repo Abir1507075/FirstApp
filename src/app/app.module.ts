@@ -21,6 +21,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { ContactComponent } from './components/contact/contact.component';
 import {MatListModule} from '@angular/material/list';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+
 
 
 
@@ -52,6 +55,8 @@ import {MatListModule} from '@angular/material/list';
     MatFormFieldModule,
     MatInputModule,
     MatListModule,
+    MatButtonModule,
+    MatIconModule,
 
 
     FlexLayoutModule,

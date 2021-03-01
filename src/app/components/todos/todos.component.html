@@ -2,6 +2,6 @@
     <h1>Add Todo</h1>
     <form id="todo-form" method="POST" action="#">  
         <p><textarea #todo  name="todo" id="todo"></textarea></p>
-        <input type="submit" id = 'submit' (click)="saveTodo(todo);">
+        <button color = "primary" mat-raised-button (click)="saveTodo(todo);">Submit</button>
     </form>
 </div>

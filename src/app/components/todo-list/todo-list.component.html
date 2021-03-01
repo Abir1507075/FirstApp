@@ -3,29 +3,33 @@
         <div  >
             <div fxLayout="row" fxLayoutAlign="space-between start">
                 <h1>Todo List</h1>
-                <button mat-raised-button (click)="openForm()">
+                <button color = "primary" active mat-raised-button (click)="openForm()">
                     Add Todo
                 </button>
             </div>
+            <mat-action-list fxLayout="row">
+                <button mat-list-item (click)="getAll($event)">All</button>
+                <button mat-list-item (click)="getComplete($event)">Complete</button>
+                <button mat-list-item (click)="getActive($event)">Active</button>
+            </mat-action-list>
             <div>
-                <ul class = "list-header-ul">
-                    <li><a [class.active]= 'all' (click)="getAll($event)">All</a></li>
-                    <li><a [class.active]= 'complete'(click)="getComplete($event)">Complete</a></li>
-                    <li><a [class.active]= 'active' (click)="getActive($event)">Active</a></li>
-                </ul>
             </div>
         </div>
     </div>             
     <div id = 'list-item'>
         <div *ngFor="let item of getList()"> 
-            <div  class='todo-item'>
+            <div  class='todo-item' fxLayout="row" fxLayoutAlign="space-between center">
                 <input type='checkbox' [checked] = '!item.status' (click)="toggle(item.item)">
-                <span>
+                <span style="width:30%;overflow: unset;">
                     {{item.item}}
                 </span>
                 <div class = 'item-edit'>
-                    <button (click)="editItem(item.item)">Edit</button>
-                    <button (click)="deleteItem(item.item)">Delete</button>
+                    <button mat-mini-fab color="primary" (click)="editItem(item.item)">
+                        <mat-icon>create</mat-icon>
+                      </button>
+                    <button mat-mini-fab color="primary" (click)="deleteItem(item.item)">
+                        <mat-icon>delete</mat-icon>
+                      </button>
                 </div>
             </div>
         </div>
