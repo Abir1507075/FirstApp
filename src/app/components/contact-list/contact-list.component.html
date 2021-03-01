@@ -1,10 +1,12 @@
 <div fxLayout="column">
-    <div (click)="onSelect(i)" class="contact" *ngFor="let contact of contactList;let i = index">
-        <div>
-            {{contact.firstName}}
-        </div>
-        <div>
-            {{contact.mobileNumber}}
-        </div>
-    </div>
+    <mat-action-list>
+        <mat-list-item class="contact" (click)="onSelect(i)"  *ngFor="let contact of contactList;let i = index">
+            <div matLine>
+                {{contact.firstName}}
+            </div>
+            <div >
+                {{contact.mobileNumber}}
+            </div>
+        </mat-list-item>
+    </mat-action-list>
 </div>

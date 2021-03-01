@@ -20,6 +20,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { ContactComponent } from './components/contact/contact.component';
+import {MatListModule} from '@angular/material/list';
 
 
 
@@ -50,6 +51,7 @@ import { ContactComponent } from './components/contact/contact.component';
     MatNativeDateModule,
     MatFormFieldModule,
     MatInputModule,
+    MatListModule,
 
 
     FlexLayoutModule,

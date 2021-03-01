@@ -1,23 +1,25 @@
-<form fxLayout="column" fxLayoutAlign="space-between center">
+<div fxLayout="column" fxLayoutAlign="start center">
     <h1>Contact Info</h1>
-    <div class="row-info">
-        <label for="firstName">FirstName: </label>
-        <span>{{contact.firstName}} </span>
-    </div>
-    <div class="row-info">
-        <label for="lastName">LastName: </label>
-        <span>{{contact.lastName}}</span>
-    </div>
-    <div class="row-info">
-        <label for="email">Email: </label>
-        <span>{{contact.email}} </span>
-    </div>
-    <div class="row-info">
-        <label for="mobileNumber">Mobile Number: </label>
-        <span>{{contact.mobileNumber}} </span>
-    </div>
-    <div class="row-info">
-        <label for = "date">Date</label>
-        <span>{{contact.dateOfBirth |date:"dd-MMM-yyyy"}}</span>
-    </div>
-</form>
+    <mat-list>
+        <mat-list-item >
+            <label>Frist Name:</label>
+            <span>{{contact.firstName}}</span>
+        </mat-list-item>
+        <mat-list-item >
+            <label >Last Name:</label>
+            <span>{{contact.lastName}} </span>
+        </mat-list-item>
+        <mat-list-item >
+            <label >Email: </label>
+            <span>{{contact.email}} </span>
+        </mat-list-item>
+        <mat-list-item >
+            <label >Mobile Number: </label>
+            <span>{{contact.mobileNumber}} </span>
+        </mat-list-item>
+        <mat-list-item >
+            <label >Date</label>
+            <span>{{contact.dateOfBirth |date:"dd-MMM-yyyy"}}</span>
+        </mat-list-item>
+    </mat-list> 
+</div>
