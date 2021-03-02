@@ -17,7 +17,7 @@
         </div>
     </div>             
     <div id = 'list-item'>
-        <div *ngFor="let item of displayList"> 
+        <div *ngFor="let item of getList()"> 
             <div  class='todo-item' fxLayout="row" fxLayoutAlign="space-between center">
                 <input type='checkbox' [checked] = '!item.status' (click)="toggle(item.item)">
                 <span style="width:30%;overflow: unset;">

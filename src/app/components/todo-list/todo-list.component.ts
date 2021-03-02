@@ -11,6 +11,10 @@ import { TodosComponent } from '../todos/todos.component';
 export class TodoListComponent implements OnInit {
 
   public todoList:any[]= [];
+  public all = true;
+  public complete = false;
+  public active  = false;
+
   public displayList:any[]=[];
 
   constructor(private todoListService:TodoListService,public dialog:MatDialog) { }
@@ -22,17 +26,33 @@ export class TodoListComponent implements OnInit {
       this.dialog.closeAll();
     })
   }
+  getList(){
+    if(this.all){
+      return this.todoList.filter(value => {return value});
+    }
+    else if(this.complete){
+      return this.todoList.filter(value => {if(!value.status)return value});
+    }
+    else return this.todoList.filter(value =>{if(value.status)return value});
+  }
   toggle(item:string){
     this.todoListService.toggle(item);
   }
   getAll(){
-    this.displayList = this.todoList.filter(value => {return value});
+    this.all = true;
+    this.complete = false;
+    this.active = false;
   }
+ 
   getComplete(){
-    this.displayList = this.todoList.filter(value => {if(!value.status)return value});
+    this.all = false;
+    this.complete = true;
+    this.active = false;
   }
   getActive(){
-    this.displayList = this.todoList.filter(value =>{if(value.status)return value});
+    this.all = false;
+    this.complete = false;
+    this.active = true;
   }
   deleteItem(item:string){
     var conf = confirm('Are sure you want to delete this?');
