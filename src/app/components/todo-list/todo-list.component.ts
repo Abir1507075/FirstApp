@@ -11,49 +11,28 @@ import { TodosComponent } from '../todos/todos.component';
 export class TodoListComponent implements OnInit {
 
   public todoList:any[]= [];
-  public all = true;
-  public complete = false;
-  public active  = false;
-
+  public displayList:any[]=[];
 
   constructor(private todoListService:TodoListService,public dialog:MatDialog) { }
   ngOnInit(): void {
     this.todoList = this.todoListService.getTodoList();
+    this.displayList = this.todoList;
     this.todoListService.event.subscribe(value => this.todoList = value);
     this.todoListService.dialogEvent.subscribe(()=>{
       this.dialog.closeAll();
     })
   }
-  getList(){
-    if(this.all){
-      return this.todoList.filter(value => {return value});
-    }
-    else if(this.complete){
-      return this.todoList.filter(value => {if(!value.status)return value});
-    }
-    else return this.todoList.filter(value =>{if(value.status)return value});
-  }
   toggle(item:string){
     this.todoListService.toggle(item);
   }
-  getAll(event:any){
-    event.preventDefault();
-    this.all = true;
-    this.complete = false;
-    this.active = false;
-  
+  getAll(){
+    this.displayList = this.todoList.filter(value => {return value});
   }
-  getComplete(event:any){
-    event.preventDefault();
-    this.all = false;
-    this.complete = true;
-    this.active = false;
+  getComplete(){
+    this.displayList = this.todoList.filter(value => {if(!value.status)return value});
   }
-  getActive(event:any){
-    event.preventDefault();
-    this.all = false;
-    this.complete = false;
-    this.active = true;
+  getActive(){
+    this.displayList = this.todoList.filter(value =>{if(value.status)return value});
   }
   deleteItem(item:string){
     var conf = confirm('Are sure you want to delete this?');

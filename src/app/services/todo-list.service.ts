@@ -7,7 +7,16 @@ import { EventEmitter, Injectable } from '@angular/core';
 })
 export class TodoListService {
 
-  todoList:any[] = [];
+  todoList:any[] = [
+      {
+      "status":"false",
+      "item":"First Task"
+      },
+      {
+        "status":"false",
+        "item":"Second Task"
+      }
+  ];
   
   constructor() {  }
 

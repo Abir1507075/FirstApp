@@ -8,16 +8,16 @@
                 </button>
             </div>
             <mat-action-list fxLayout="row">
-                <button mat-list-item (click)="getAll($event)">All</button>
-                <button mat-list-item (click)="getComplete($event)">Complete</button>
-                <button mat-list-item (click)="getActive($event)">Active</button>
+                <button mat-list-item (click)="getAll()">All</button>
+                <button mat-list-item (click)="getComplete()">Complete</button>
+                <button mat-list-item (click)="getActive()">Active</button>
             </mat-action-list>
             <div>
             </div>
         </div>
     </div>             
     <div id = 'list-item'>
-        <div *ngFor="let item of getList()"> 
+        <div *ngFor="let item of displayList"> 
             <div  class='todo-item' fxLayout="row" fxLayoutAlign="space-between center">
                 <input type='checkbox' [checked] = '!item.status' (click)="toggle(item.item)">
                 <span style="width:30%;overflow: unset;">
@@ -27,7 +27,7 @@
                     <button mat-mini-fab color="primary" (click)="editItem(item.item)">
                         <mat-icon>create</mat-icon>
                       </button>
-                    <button mat-mini-fab color="primary" (click)="deleteItem(item.item)">
+                    <button mat-mini-fab color="warn" (click)="deleteItem(item.item)">
                         <mat-icon>delete</mat-icon>
                       </button>
                 </div>
